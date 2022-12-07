@@ -1,0 +1,212 @@
+:root {
+    --main__background: #35736E;
+    --main__color: #6A6A6A;
+    --color__light: #fff;
+    --color__dark: #2F2F2F;
+    --background__light: #D9D9D9;
+    --background__dark: #2F2F2F;
+}
+
+
+@mixin background_color($background, $color) {
+    background: $background;
+    color: $color;
+}
+
+@mixin title($size, $line) {
+    font-size: $size;
+    line-height: $line;
+}
+
+@mixin height_width($height, $width) {
+    height: $height;
+    width: $width;
+}
+
+
+body {
+    font-family: 'Inter';
+    @include title(14px, 24px);
+    color: var(--main__color);
+}
+
+.body_active {
+    overflow: hidden;
+}
+
+.wrapper {
+    max-width: 1119px;
+    margin: auto;
+    padding: clamp(5.375rem, 2.296rem + 15.39vw, 13.063rem) 16px clamp(3.438rem, 1.135rem + 11.51vw, 9.188rem) 16px;
+}
+
+.socials {
+    display: flex;
+    gap: 10px;
+
+    &__icon {
+        padding: 5px;
+        border-radius: 50%;
+        background: var(--background__light);
+    }
+}
+
+@import "_nav.scss";
+
+
+.column {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    &__center {
+        margin: auto;
+    }
+}
+
+.edge-content {
+    &>*:not(:first-child) {
+        margin-left: auto;
+    }
+}
+
+[class*="title"] {
+    font-weight: 600;
+    color: var(--color__dark);
+}
+
+.title {
+    @include title(34px, 41px);
+}
+
+.title__medium {
+    @include title(18px, 22px);
+}
+
+.excerpt {
+    font-weight: 700;
+    @include title(12px, inherit);
+    color: var(--main__color);
+}
+
+.text-center {
+    text-align: center;
+}
+
+@import "_button";
+
+.background {
+    background: var(--main__background);
+    position: relative;
+    overflow: hidden;
+}
+
+
+@import "_promo";
+@import "_content";
+
+
+
+.gap-20 {
+    gap: 20px;
+}
+
+
+@import"_grid.scss";
+@import"_card.scss";
+@import"_gallery.scss";
+@import"_animation.scss";
+
+
+
+.img-left {
+    float: left;
+}
+
+.additionally {
+    padding-top: 135px;
+    padding-bottom: 98px;
+    gap: 25px;
+}
+
+div[data-square] {
+    position: relative;
+}
+
+[data-square]::after,
+[data-circle]::before {
+    content: "";
+    display: block;
+    position: absolute;
+    @include height_width(90%, 100%);
+    bottom: 0px;
+    left: 0;
+    background: rgba(53, 115, 110, 0.3);
+    border-radius: 10px;
+    z-index: -1;
+}
+
+[data-circle]::before {
+    top: 0;
+    @include height_width(33px, 33px);
+    border-radius: 50%;
+}
+
+.box {
+    position: absolute;
+    @include height_width(176px, 260px);
+    background-size: 20px 20px;
+    opacity: 0.3;
+}
+
+.news {
+    padding-top: 23px;
+    padding-bottom: 0px;
+}
+
+@import '_contacts.scss';
+
+
+.footer {
+    padding-top: 140px;
+    padding-bottom: 0px;
+
+    &__column {
+        display: flex;
+        gap: 70px;
+        flex-wrap: wrap;
+    }
+
+    &__column>* {
+        flex: 1 1 100px;
+    }
+
+    &__column *:nth-child(1) {
+        flex: 4 1 300px;
+    }
+
+    &>*:not(:first-child) {
+        margin-top: 40px;
+    }
+}
+
+.modal {
+    @include height_width(100vh, 100vw);
+    background: rgba(53, 115, 110, 0.3);
+    position: fixed;
+    top: 0px;
+    z-index: 14;
+
+    &__img {
+        margin: auto;
+        @include height_width(100vh, 100%);
+        object-fit: scale-down;
+    }
+
+    &__none {
+        display: none;
+    }
+}
+
+
+
+@import "_swiper.scss";

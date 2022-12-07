@@ -1,0 +1,43 @@
+.card {
+    @include height_width(inherit, 100%);
+    display: grid;
+    align-content: space-between;
+    padding-bottom: 40px;
+    cursor: pointer;
+
+    &__subject {
+        font-weight: 700;
+    }
+
+    &__img {
+        margin: auto;
+        transition: 0.7s all;
+    }
+
+    &__button {
+        position: absolute;
+        bottom: -16px;
+        left: 44%;
+        opacity: 0;
+        transform: scale(-0.7);
+        transition: 0.6s cubic-bezier(0, 0.03, 0.43, -0.95);
+    }
+
+    &[data-square]::after {
+        height: 0px;
+        transition: 0.7s all;
+    }
+
+    &[data-square]:hover::after {
+        height: 90%;
+    }
+
+    &:hover &__img {
+        transform: translateY(-20px);
+    }
+
+    &:hover &__button {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

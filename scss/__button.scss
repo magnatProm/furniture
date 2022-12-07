@@ -1,0 +1,41 @@
+.button {
+    padding: 11px 32px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s all;
+
+    &-main {
+        padding: 10px 35px;
+        @include background_color(#F9BF29, var(--color__dark));
+    }
+
+    &-main:hover {
+        box-shadow: 0px 0px 29px 12px #f9bf2963;
+    }
+
+    &-background {
+        @include background_color(var(--background__dark), var(--color__light));
+        border: 2px solid var(--background__dark);
+    }
+
+    &-background:hover {
+        @include background_color(transparent, var(--color__black));
+    }
+
+    &-border {
+        border: 2px solid rgba(255, 255, 255, 0.29);
+        color: var(--color__light);
+    }
+
+    &-border:hover {
+        background: rgba(255, 255, 255, 0.29);
+    }
+
+    &-plus {
+        font-size: 30px;
+        padding: 1px 8px 7px;
+        border-radius: 50%;
+    }
+}

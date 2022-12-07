@@ -1,0 +1,126 @@
+.icon-animation {
+  &:hover .car {
+    &__wheel {
+      transform: skewX(349deg) translateX(3px);
+    }
+
+    &__body {
+      animation: car__body 0.6s linear 0s infinite alternate;
+    }
+
+    @keyframes car__body {
+      0% {
+        transform: translateY(-1px);
+      }
+
+      100% {
+        transform: translateY(2px);
+      }
+    }
+  }
+
+  &:hover .circle {
+    animation: circle 2s linear 0s infinite normal;
+
+    @keyframes circle {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  &:hover .package {
+    &__open {
+      animation: package__open 0.3s linear 0s 1 alternate;
+    }
+
+    @keyframes package__open {
+      100% {
+        d: path('M2.78105 5L2 7.33333V26C2 26.7072 2.28095 27.3855 2.78105 27.8856C3.28115 28.3857 3.95942 28.6667 4.66667 28.6667H23.3333C24.0406 28.6667 24.7189 28.3857 25.219 27.8856C25.719 27.3855 26 26.7072 26 26V7.33333L25.219 5H2.78105Z');
+      }
+    }
+  }
+
+  .star {
+    position: absolute;
+    left: 3px;
+    top: 8px;
+    opacity: 0;
+
+    animation: star1 0.6s linear .2s 1 alternate both;
+
+    @keyframes star1 {
+      0% {
+        top: -35px;
+        opacity: 1;
+      }
+
+      30% {
+        opacity: 0;
+      }
+
+      100% {
+        top: 9px;
+        opacity: 0;
+      }
+    }
+  }
+
+  &:hover .star {
+    animation: star 0.6s linear .2s 1 alternate forwards;
+
+    @keyframes star {
+      30% {
+        opacity: 0;
+      }
+
+      100% {
+        top: -35px;
+        opacity: 1;
+      }
+    }
+  }
+
+  .star:nth-child(2),
+  .star:nth-child(3) {
+    transform: rotate(0deg);
+    transition: transform 0.6s linear .4s;
+  }
+
+  .star:nth-child(3) {
+    transform: rotateZ(358deg);
+  }
+
+  &:hover .star:nth-child(2) {
+    transform: rotate(226deg);
+    transform-origin: right;
+  }
+
+  &:hover .star:nth-child(3) {
+    transform: rotateZ(128deg);
+    transform-origin: left;
+  }
+
+}
+
+
+// animation scroll
+
+.animaScroll-top {
+  transform: translate(0px, 55px);
+  opacity: 0;
+}
+
+$i: 1;
+$w: 1 / 2;
+
+@for $i from 1 through 4 {
+
+  .icon-animation:nth-child(#{$i}) {
+    transition: transform .7s linear $i * $w + 0s;
+  }
+}
+
+.animaScroll-scale {
+  transform: scale(0);
+}
